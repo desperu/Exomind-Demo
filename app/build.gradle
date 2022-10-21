@@ -19,7 +19,6 @@ android {
 
         // Open Weather map api key
         buildConfigField "String", "OPEN_WEATHER_MAP_API_KEY", open_weather_map_api_key
-        resValue "string", "open_weather_map_api_key", open_weather_map_api_key
     }
 
     buildTypes {
@@ -65,4 +64,7 @@ dependencies {
     // OkHttp
     implementation "com.squareup.okhttp3:okhttp:$okhttp_version"
     implementation "com.squareup.okhttp3:logging-interceptor:$okhttp_version"
+
+    // Gson
+    implementation 'com.google.code.gson:gson:2.9.1'
 }
