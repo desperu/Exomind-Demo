@@ -1,5 +1,7 @@
 package org.desperu.exominddemo.di.module
 
+import org.desperu.exominddemo.data.repositories.OpenWeatherMapRepository
+import org.desperu.exominddemo.data.repositories.OpenWeatherMapRepositoryImpl
 import org.koin.dsl.module
 
 /**
@@ -8,11 +10,11 @@ import org.koin.dsl.module
 val repositoryModule = module {
 
     /**
-     * Provides an IndependentNewsRepository instance.
+     * Provides an [OpenWeatherMapRepository] instance.
      */
-//    single<IndependentNewsRepository> {
-//        IndependentNewsRepositoryImpl(
-//            get(), get(), get(), get(), get(), get(), get()
-//        )
-//    }
+    single<OpenWeatherMapRepository> {
+        OpenWeatherMapRepositoryImpl(
+            get()
+        )
+    }
 }

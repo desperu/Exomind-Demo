@@ -6,6 +6,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import org.desperu.exominddemo.BuildConfig
 import org.koin.dsl.module
 import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 /**
  * Koin module which provides dependencies related to network.
@@ -40,6 +41,7 @@ val networkModule = module {
         Retrofit.Builder()
             .baseUrl(baseUrl)
             .client(get() as OkHttpClient)
+            .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
 }

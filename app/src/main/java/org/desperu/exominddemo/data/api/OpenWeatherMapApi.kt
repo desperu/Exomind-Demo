@@ -1,7 +1,7 @@
 package org.desperu.exominddemo.data.api
 
 import org.desperu.exominddemo.BuildConfig
-import org.desperu.exominddemo.data.models.OpenWeatherMapAPI
+import org.desperu.exominddemo.data.models.OpenWeatherMapResponse
 import org.desperu.exominddemo.data.utils.METRIC
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -25,5 +25,5 @@ interface OpenWeatherMapApi {
         @Query("q") city: String,
         @Query("appid") apiKey: String = BuildConfig.OPEN_WEATHER_MAP_API_KEY,
         @Query("units") units: String = METRIC
-    ): OpenWeatherMapAPI
+    ): OpenWeatherMapResponse
 }

@@ -7,7 +7,7 @@ import com.google.gson.annotations.Expose
  *
  * TODO: We parse here only needed data for this demo.
  */
-data class OpenWeatherMapAPI(
+data class OpenWeatherMapResponse(
     @Expose val weather: Weather,
     @Expose val main: Main,
     @Expose val name: String
