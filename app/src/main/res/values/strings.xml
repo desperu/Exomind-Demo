@@ -1,3 +1,8 @@
 <resources>
+
     <string name="app_name">Exomind Demo</string>
+
+    <!-- HOME FRAGMENT -->
+    <string name="weather">Weather</string>
+
 </resources>

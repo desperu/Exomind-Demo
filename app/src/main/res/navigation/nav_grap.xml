@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    android:label="nav_graph"
+    app:startDestination="@id/navigation">
+
+    <navigation android:id="@+id/navigation"
+        app:startDestination="@id/homeFragment">
+
+        <fragment
+            android:id="@+id/homeFragment"
+            android:name="org.desperu.exominddemo.ui.main.fragments.HomeFragment"
+            android:label="HomeFragment">
+            <action
+                android:id="@+id/action_homeFragment_to_weatherFragment"
+                app:destination="@id/weatherFragment" />
+        </fragment>
+
+        <fragment
+            android:id="@+id/weatherFragment"
+            android:name="org.desperu.exominddemo.ui.main.fragments.WeatherFragment"
+            android:label="WeatherFragment">
+            <action
+                android:id="@+id/action_weatherFragment_to_homeFragment"
+                app:destination="@id/navigation" />
+        </fragment>
+
+    </navigation>
+
+</navigation>

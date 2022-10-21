@@ -1,7 +1,7 @@
 package org.desperu.exominddemo.di.module
 
+import org.desperu.exominddemo.ui.main.fragments.WeatherViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
-import org.koin.core.parameter.parametersOf
 import org.koin.dsl.module
 
 /**
@@ -9,14 +9,10 @@ import org.koin.dsl.module
  */
 val viewModelModule = module {
 
-//    /**
-//     * Provides the ArticleListViewModel instance.
-//     */
-//    viewModel { (fragment: BaseBindingFragment) ->
-//        ArticleListViewModel(
-//            get(),
-//            get(),
-//            get { parametersOf(fragment) }
-//        )
-//    }
+    /**
+     * Provides the WeatherViewModel instance.
+     */
+    viewModel {
+        WeatherViewModel()
+    }
 }
