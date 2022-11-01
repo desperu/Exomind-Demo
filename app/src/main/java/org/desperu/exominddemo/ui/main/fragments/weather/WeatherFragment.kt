@@ -70,15 +70,6 @@ class WeatherFragment: BaseBindingFragment(), WeatherInterface {
         recyclerView.setHasFixedSize(true)
     }
 
-    // -----------------
-    // METHODS OVERRIDE
-    // -----------------
-
-    override fun onDestroy() {
-        super.onDestroy()
-        recyclerAdapter = null
-    }
-
     // --------------
     // DATA
     // --------------

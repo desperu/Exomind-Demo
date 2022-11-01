@@ -42,7 +42,7 @@ abstract class BaseBindingFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewBinding?.lifecycleOwner = this
+        viewBinding?.lifecycleOwner = viewLifecycleOwner
         configureDesign()
     }
 

@@ -24,7 +24,6 @@
             android:layout_margin="@dimen/default_middle_margin">
 
             <TextView
-                android:id="@+id/tv_city"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
@@ -44,12 +43,11 @@
                 android:text="@{viewModel.weatherTemp + '°' + 'C'}"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@id/tv_city"
-                app:layout_constraintEnd_toStartOf="@+id/im_weather"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 tools:text="32°C"/>
 
             <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/im_weather"
                 android:layout_width="@dimen/im_weather_width_height"
                 android:layout_height="@dimen/im_weather_width_height"
                 app:setIcon="@{viewModel.weatherIcon}"
