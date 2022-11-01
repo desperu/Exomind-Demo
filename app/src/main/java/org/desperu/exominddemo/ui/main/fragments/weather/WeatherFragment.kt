@@ -8,6 +8,7 @@ import kotlinx.coroutines.launch
 import org.desperu.exominddemo.R
 import org.desperu.exominddemo.databinding.FragmentWeatherBinding
 import org.desperu.exominddemo.ui.base.BaseBindingFragment
+import org.desperu.exominddemo.ui.main.MainInterface
 import org.koin.android.ext.android.get
 
 /**
@@ -35,6 +36,7 @@ class WeatherFragment: BaseBindingFragment(), WeatherHandler {
 
     override fun configureDesign() {
         configureRecyclerView()
+        showBackArrow()
     }
 
     override fun updateDesign() {
@@ -93,6 +95,13 @@ class WeatherFragment: BaseBindingFragment(), WeatherHandler {
     // --------------
     // UI
     // --------------
+
+    /**
+     * Show the back arrow.
+     */
+    private fun showBackArrow() {
+        get<MainInterface>().showBackArrow(true)
+    }
 
     /**
      * Update the recycler view data.

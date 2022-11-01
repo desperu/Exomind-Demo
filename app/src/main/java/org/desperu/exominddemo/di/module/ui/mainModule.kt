@@ -1,8 +1,10 @@
 package org.desperu.exominddemo.di.module.ui
 
 import android.view.View
+import org.desperu.exominddemo.ui.base.BaseActivity
 import org.desperu.exominddemo.ui.helper.SnackBarHelper
 import org.desperu.exominddemo.ui.helper.SnackBarHelperImpl
+import org.desperu.exominddemo.ui.main.MainInterface
 import org.koin.dsl.module
 
 /**
@@ -17,5 +19,12 @@ val mainModule = module {
         SnackBarHelperImpl(
             rootView
         )
+    }
+
+    /**
+     * Provides a MainInterface from the instance of MainFragment.
+     */
+    single { (activity: BaseActivity) ->
+        activity as MainInterface
     }
 }

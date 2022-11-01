@@ -5,7 +5,9 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.findNavController
 import org.desperu.exominddemo.R
 import org.desperu.exominddemo.ui.base.BaseBindingFragment
+import org.desperu.exominddemo.ui.main.MainInterface
 import org.desperu.exominddemo.ui.main.fragments.weather.WeatherFragment
+import org.koin.android.ext.android.get
 
 /**
  * HomeFragment, fragment show at the application launching.
@@ -25,7 +27,9 @@ class HomeFragment: BaseBindingFragment(), HomeHandler {
 
     override fun configureDesign() {}
 
-    override fun updateDesign() {}
+    override fun updateDesign() {
+        hideBackArrow()
+    }
 
     // --------------
     // CONFIGURATION
@@ -57,6 +61,17 @@ class HomeFragment: BaseBindingFragment(), HomeHandler {
      */
     private fun navigateToWeather() {
         findNavController().navigate(R.id.action_homeFragment_to_weatherFragment)
+    }
+
+    // --------------
+    // UI
+    // --------------
+
+    /**
+     * Hide Back arrow.
+     */
+    private fun hideBackArrow() {
+        get<MainInterface>().showBackArrow(false)
     }
 }
 

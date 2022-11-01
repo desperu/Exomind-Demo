@@ -19,6 +19,9 @@
 
     <!-- LAYOUTS -->
 
+    <!--  APPBAR -->
+    <dimen name="appbar_title_text_size">24sp</dimen>
+
     <!-- Fragment Home -->
     <dimen name="frag_home_title_text_size">24sp</dimen>
 

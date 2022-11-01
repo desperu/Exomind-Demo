@@ -14,7 +14,7 @@
         android:layout_height="match_parent"
         android:background="@color/light_grey">
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -26,11 +26,13 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_weather"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/purple_500"
             android:text="@string/weather"
+            android:textColor="@color/white"
             android:onClick="@{() -> handler.onClickWeather()}"
             app:layout_constraintTop_toBottomOf="@+id/tv_title"
             app:layout_constraintBottom_toBottomOf="parent"
