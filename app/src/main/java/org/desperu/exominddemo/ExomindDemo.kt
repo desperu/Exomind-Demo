@@ -22,6 +22,7 @@ class ExomindDemo : Application() {
                 androidContext(this@ExomindDemo)
                 modules(
                     listOf(
+                        serviceModule,
                         networkModule,
                         apiModule,
                         repositoryModule,

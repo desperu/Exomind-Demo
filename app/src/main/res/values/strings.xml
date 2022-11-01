@@ -4,5 +4,8 @@
 
     <!-- HOME FRAGMENT -->
     <string name="weather">Weather</string>
+    <string name="downloads">Nous téléchargeons les données…</string>
+    <string name="almost_over">C\'est presque fini…</string>
+    <string name="some_seconds">Plus que quelques secondes avant d\'avoir le résultat…</string>
 
 </resources>
