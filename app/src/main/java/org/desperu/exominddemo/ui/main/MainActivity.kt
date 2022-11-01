@@ -63,7 +63,7 @@ class MainActivity : BaseActivity(mainModule), MainInterface {
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
 
-        // Set graph and so, show start fragment (article frag).
+        // Set graph and so, show start fragment (home frag).
         navController.setGraph(R.navigation.nav_grap)
     }
 
