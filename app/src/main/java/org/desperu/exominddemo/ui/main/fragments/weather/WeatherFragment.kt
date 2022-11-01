@@ -9,14 +9,13 @@ import org.desperu.exominddemo.R
 import org.desperu.exominddemo.databinding.FragmentWeatherBinding
 import org.desperu.exominddemo.ui.base.BaseBindingFragment
 import org.koin.android.ext.android.get
-import org.koin.core.parameter.parametersOf
 
 /**
  * WeatherFragment, display the weather list for towns.
  *
  * @author Desperu
  */
-class WeatherFragment: BaseBindingFragment(), WeatherInterface {
+class WeatherFragment: BaseBindingFragment(), WeatherHandler {
 
     // FOR DATA
     private val binding: FragmentWeatherBinding get() = (viewBinding as? FragmentWeatherBinding)!!
@@ -25,6 +24,8 @@ class WeatherFragment: BaseBindingFragment(), WeatherInterface {
 
     // FOR UI
     private val recyclerView by lazy { binding.recyclerView }
+    private val loadingContainer by lazy { binding.clProgressContainer }
+    private val retryBtn by lazy { binding.btnRetry }
 
     // --------------
     // BASE METHODS
@@ -33,7 +34,6 @@ class WeatherFragment: BaseBindingFragment(), WeatherInterface {
     override fun getBindingView(): View = configureViewModel()
 
     override fun configureDesign() {
-        configureKoinDependency()
         configureRecyclerView()
     }
 
@@ -51,14 +51,8 @@ class WeatherFragment: BaseBindingFragment(), WeatherInterface {
     private fun configureViewModel(): View {
         viewBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_weather, container, false)
         binding.setVariable(org.desperu.exominddemo.BR.viewModel, viewModel)
+        binding.setVariable(org.desperu.exominddemo.BR.handler, this)
         return binding.root
-    }
-
-    /**
-     * Configure koin dependency for weather fragment.
-     */
-    private fun configureKoinDependency() {
-        get<WeatherInterface> { parametersOf(this) }
     }
 
     /**
@@ -66,6 +60,7 @@ class WeatherFragment: BaseBindingFragment(), WeatherInterface {
      */
     private fun configureRecyclerView() {
         recyclerAdapter = RecyclerAdapter(R.layout.item_weather)
+        recyclerView.adapter = recyclerAdapter
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.setHasFixedSize(true)
     }
@@ -78,28 +73,58 @@ class WeatherFragment: BaseBindingFragment(), WeatherInterface {
      * Launch the data for the weather recycler view.
      */
     private fun launchData() = lifecycleScope.launch {
-        viewModel.run {
-            fetchWeathers()
-            displayMessage()
-            updateLoading()
-        }
+        showRetryButton(false)
+        updateRecyclerView(viewModel.fetchWeathers().map { ItemWeatherViewModel(it) })
+        showRetryButton(true)
     }
 
-    // --- GETTERS ---
+    // --------------
+    // ACTIONS
+    // --------------
 
     /**
-     * Returns the recycler adapter instance.
+     * On click retry button.
      */
-    override fun getRecyclerAdapter(): RecyclerAdapter? = recyclerAdapter
+    override fun onClickRetry() {
+        updateRecyclerView(emptyList()) // Reset recycler data
+        launchData()
+    }
+
+    // --------------
+    // UI
+    // --------------
+
+    /**
+     * Update the recycler view data.
+     *
+     * @param items the item list to set.
+     */
+    private fun updateRecyclerView(items: List<ItemWeatherViewModel>) {
+        recyclerAdapter?.updateList(items.toMutableList())
+    }
+
+    /**
+     * Show or hide retry button, depends of the toShow value.
+     * @param toShow true to show, false to hide retry button.
+     */
+    private fun showRetryButton(toShow: Boolean) {
+        if (toShow) {
+            retryBtn.visibility = View.VISIBLE
+            loadingContainer.visibility = View.GONE
+        } else {
+            retryBtn.visibility = View.GONE
+            loadingContainer.visibility = View.VISIBLE
+        }
+    }
 }
 
 /**
- * Weather interface that's allow communication with it's fragment.
+ * Handler for the Weather Fragment.
  */
-interface WeatherInterface {
+interface WeatherHandler {
 
     /**
-     * Returns the recycler adapter instance.
+     * On click retry button.
      */
-    fun getRecyclerAdapter(): RecyclerAdapter?
+    fun onClickRetry()
 }

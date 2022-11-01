@@ -60,6 +60,9 @@ class HomeFragment: BaseBindingFragment(), HomeHandler {
     }
 }
 
+/**
+ * Handler for the Home Fragment.
+ */
 interface HomeHandler {
 
     /**
