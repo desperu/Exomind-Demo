@@ -10,7 +10,7 @@
 
         <fragment
             android:id="@+id/homeFragment"
-            android:name="org.desperu.exominddemo.ui.main.fragments.HomeFragment"
+            android:name="org.desperu.exominddemo.ui.main.fragments.home.HomeFragment"
             android:label="HomeFragment">
             <action
                 android:id="@+id/action_homeFragment_to_weatherFragment"
@@ -19,11 +19,11 @@
 
         <fragment
             android:id="@+id/weatherFragment"
-            android:name="org.desperu.exominddemo.ui.main.fragments.WeatherFragment"
+            android:name="org.desperu.exominddemo.ui.main.fragments.weather.WeatherFragment"
             android:label="WeatherFragment">
             <action
                 android:id="@+id/action_weatherFragment_to_homeFragment"
-                app:destination="@id/navigation" />
+                app:destination="@id/homeFragment" />
         </fragment>
 
     </navigation>

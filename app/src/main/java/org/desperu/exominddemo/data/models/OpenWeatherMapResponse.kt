@@ -5,21 +5,21 @@ import com.google.gson.annotations.Expose
 /**
  * Model used to parse OpenWeather Map API response, from JSON.
  *
- * TODO: We parse here only needed data for this demo.
+ * We parse here only needed data for this demo.
  */
 data class OpenWeatherMapResponse(
-    @Expose val weather: Weather,
+    @Expose val weather: List<Weather>,
     @Expose val main: Main,
-    @Expose val name: String
+    @Expose var name: String
 )
 
 data class Weather(
-    @Expose val id: Number,
+    @Expose val id: Int,
     @Expose val main: String,
     @Expose val description: String,
     @Expose val icon: String
 )
 
 data class Main(
-    @Expose val temp: Number
+    @Expose val temp: Double
 )

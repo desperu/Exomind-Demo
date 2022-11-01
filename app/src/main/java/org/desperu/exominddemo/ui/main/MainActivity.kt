@@ -3,6 +3,7 @@ package org.desperu.exominddemo.ui.main
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import org.desperu.exominddemo.R
+import org.desperu.exominddemo.di.module.ui.mainModule
 import org.desperu.exominddemo.ui.base.BaseActivity
 
 /**
@@ -12,7 +13,7 @@ import org.desperu.exominddemo.ui.base.BaseActivity
  *
  * @constructor Instantiates a new MainActivity.
  */
-class MainActivity : BaseActivity() {
+class MainActivity : BaseActivity(mainModule) {
 
     // FOR DATA
     private lateinit var navHostFragment: NavHostFragment

@@ -59,9 +59,19 @@ class WeatherUseCasesImpl(
         val weathers = mutableListOf<OpenWeatherMapResponse>()
 
         cities.forEach { city ->
-            openWeatherMapRepo.fetchWeather(city)?.let { weathers.add(it) }
-            delay(10000)
+            openWeatherMapRepo.fetchWeather(city)?.let {
+                // Set requested city name to avoid display "Arrondissement de Rennes"
+                it.name = city
+
+                weathers.add(it)
+
+                // 10s between each request ~50s
+                delay(10000)
+            }
         }
+
+        // To reach the minute
+        delay(10000)
 
         return@withContext weathers
     }

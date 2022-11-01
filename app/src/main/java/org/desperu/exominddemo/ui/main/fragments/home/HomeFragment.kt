@@ -1,10 +1,17 @@
-package org.desperu.exominddemo.ui.main.fragments
+package org.desperu.exominddemo.ui.main.fragments.home
 
 import android.view.View
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.fragment.findNavController
 import org.desperu.exominddemo.R
 import org.desperu.exominddemo.ui.base.BaseBindingFragment
+import org.desperu.exominddemo.ui.main.fragments.weather.WeatherFragment
 
+/**
+ * HomeFragment, fragment show at the application launching.
+ *
+ * @author Desperu
+ */
 class HomeFragment: BaseBindingFragment(), HomeHandler {
 
     // FOR DATA
@@ -38,7 +45,18 @@ class HomeFragment: BaseBindingFragment(), HomeHandler {
     // -----------------
 
     override fun onClickWeather() {
-//        navigateToWeather()
+        navigateToWeather()
+    }
+
+    // -----------------
+    // NAVIGATION
+    // -----------------
+
+    /**
+     * Navigate to the [WeatherFragment]
+     */
+    private fun navigateToWeather() {
+        findNavController().navigate(R.id.action_homeFragment_to_weatherFragment)
     }
 }
 

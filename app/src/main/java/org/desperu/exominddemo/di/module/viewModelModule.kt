@@ -1,6 +1,6 @@
 package org.desperu.exominddemo.di.module
 
-import org.desperu.exominddemo.ui.main.fragments.WeatherViewModel
+import org.desperu.exominddemo.ui.main.fragments.weather.WeatherViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -13,6 +13,6 @@ val viewModelModule = module {
      * Provides the WeatherViewModel instance.
      */
     viewModel {
-        WeatherViewModel()
+        WeatherViewModel(get())
     }
 }
