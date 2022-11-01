@@ -2,7 +2,7 @@ package org.desperu.exominddemo.data.repositories
 
 import org.desperu.exominddemo.data.api.OpenWeatherMapApi
 import org.desperu.exominddemo.data.models.OpenWeatherMapResponse
-import org.desperu.exominddemo.helper.FetchHelper.catchFetch
+import org.desperu.exominddemo.data.helper.FetchHelper.catchFetchWithMessage
 import org.koin.core.component.KoinComponent
 
 /**
@@ -40,7 +40,10 @@ class OpenWeatherMapRepositoryImpl(
     /**
      * {@inheritDoc}
      */
-    override suspend fun fetchWeather(city: String): OpenWeatherMapResponse? = catchFetch {
+    override suspend fun fetchWeather(
+        city: String
+    ): OpenWeatherMapResponse? = catchFetchWithMessage {
+
         openWeatherMapApi.getWeather(city)
     }
 }
