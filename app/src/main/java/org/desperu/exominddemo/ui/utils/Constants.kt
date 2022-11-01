@@ -29,3 +29,10 @@ const val RAIN = 10 // for "10d"
 const val THUNDERSTORM = 11 // for "11d"
 const val SNOW = 13 // for "13d"
 const val MIST = 50 // for "50d"
+
+
+// --- FOR HELPER ---
+
+// For SnackBarHelper
+
+const val DURATION = 2000
